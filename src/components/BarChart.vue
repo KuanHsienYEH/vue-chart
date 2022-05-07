@@ -118,8 +118,9 @@ export default {
 <style scoped>
 .barchart-svg-container {
   display: inline-block;
-  position: relative;
-  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
   padding-bottom: 1%;
   vertical-align: top;
   overflow: hidden;

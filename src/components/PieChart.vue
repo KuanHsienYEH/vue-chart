@@ -136,10 +136,9 @@ export default {
 
 <style scoped>
 .piechart-svg-container {
-  display: inline-block;
+  display: block;
   position: relative;
   width: 100%;
-  padding-bottom: 1%;
   vertical-align: top;
   overflow: hidden;
 }
