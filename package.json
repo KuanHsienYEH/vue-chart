@@ -1,8 +1,11 @@
 {
-  "name": "vue_chart",
+  "name": "vue-chart",
+  "homepage": "https://KuanHsienYEH.github.io/vue-chart",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -10,6 +13,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "d3": "^6.7.0",
+    "gh-pages": "^5.0.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
