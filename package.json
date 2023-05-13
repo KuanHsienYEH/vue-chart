@@ -3,12 +3,8 @@
   "homepage": "https://kuanhsienyeh.github.io/vue-chart",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "npm run build && node ./deploy/ghpages.js ",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
