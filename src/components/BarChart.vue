@@ -1,6 +1,6 @@
 <template>
   <div class="barchart-svg-container" align="center">
-    <div ref="barChartContainer"></div>
+    <div class="barchart" ref="barChartContainer"></div>
   </div>
 </template>
 
@@ -17,20 +17,19 @@ export default {
     }
   },
   mounted() {
-    //console.log(this.data);
     this.fomatData()
     this.drawBar(this.currentData);
   },
-  // beforeUnmount() {
-  //   this.clearBar()
-  // },
+  beforeDestroy() {
+    this.clearBar()
+  },
   methods: {
     fomatData(){
       this.currentData = Object.entries(this.data).map(([age, value]) => ({ age, value }));
     },
     drawBar(data) {
-      const width = 500,
-        height = 200,
+      const width = 280,
+        height = 150,
         margin = 20,
         innerWidth = width - margin * 2,
         innerHeight = height - margin * 2;
@@ -96,7 +95,6 @@ export default {
 .barchart-svg-container {
   background-color: gray;
   opacity: 0.7;
-  position: absolute;
-  padding: 20px;
+  padding: 0 20px;
 }
 </style>

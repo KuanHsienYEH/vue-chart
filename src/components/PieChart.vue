@@ -1,12 +1,10 @@
 <template>
   <div class="piechart-svg-container" align="center">
-    <div class="chart_warpper">
-      <div ref="chartContainer" class="piechart">
-        <BarChart class="bar" 
-        :style="{ left: barChartPosition.x + 'px', top: barChartPosition.y + 'px' }" 
-        v-if="showBarChart" 
-        :data="barChartData" />
-      </div>
+    <div  ref="chartContainer" class="piechart">
+      <BarChart class="bar" 
+      :style="{ left: barChartPosition.x + 'px', top: barChartPosition.y + 'px' }" 
+      v-if="showBarChart" 
+      :data="barChartData" />
     </div>
     <div class="btn_wrapper">
       <button
@@ -35,13 +33,8 @@ export default{
   data: () => ({
     currentDataset: [],
     currentFocusSex: "",
-    total: 0,
-    SEX: {
-      MALE: "Male",
-      FEMALE: "Female",
-    },
+    barChartData:{},
     populationBySex: [],
-    barData:{},
     barChartPosition: { x: 0, y: 0 },
     showBarChart: false,
 
@@ -50,7 +43,7 @@ export default{
     this.currentDataset = this.data[0];
   },
   mounted() {
-    this.defaultPie();
+    this.drawDefaultPie();
   },
   methods: {
     sortingPopulationBySex(data) {
@@ -67,14 +60,14 @@ export default{
       }
     },
     drawPie(data) {
-      const width = 350,
-        height = 350,
+      const width = 250,
+        height = 250,
         radius = Math.min(width, height) / 2,
         color = d3.scaleOrdinal(d3.schemeCategory10);
 
       const arc = d3
         .arc()
-        .innerRadius(radius - 100)
+        .innerRadius(radius - 80)
         .outerRadius(radius - 10);
 
       const pie = d3
@@ -114,7 +107,7 @@ export default{
     clearPie() {
       d3.selectAll(".piechart svg").remove();
     },
-    defaultPie() {
+    drawDefaultPie() {
       this.sortingPopulationBySex(this.currentDataset);
       this.drawPie(this.populationBySex);
     },
@@ -125,9 +118,11 @@ export default{
       this.drawPie(this.populationBySex);
     },
     showBar(e, d){
-      d3.select(e.currentTarget).attr("r", 8);
       this.showBarChart = true;
-      this.barChartData = this.currentDataset[d.data.sex];
+      if(this.currentFocusSex !== d.data.sex ){
+        this.currentFocusSex = d.data.sex
+        this.barChartData = this.currentDataset[d.data.sex];
+      }
       this.updateBarChartPosition(e.clientX , e.clientY );
     },
     clearBar(){
@@ -146,16 +141,20 @@ export default{
 
 <style scoped>
 .piechart-svg-container {
-  position: relative;
   padding-bottom: 1%;
-  vertical-align: top;
-  width: 100%;
+  margin-top: 100px;
 }
-.chart_warpper{
-  margin-bottom: 20px;
+.piechart{
+  position: relative;
 }
+.bar{
+  z-index: 10;
+  position: absolute;
+  pointer-events: none; 
+}
+
 .btn_wrapper {
-  margin: 5 10px;
+  margin: 5px 10px;
   padding: 20px;
 }
 
@@ -172,7 +171,5 @@ export default{
   color: white;
   background-color: black;
 }
-.bar{
-  z-index: 99;
-}
+
 </style>
