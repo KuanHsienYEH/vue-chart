@@ -1,24 +1,6 @@
-# vue_chart
+# Vue chart
+## hover pie chart to show deaitl bar chart
 
-## Project setup
-```
-npm install
-```
+demo : https://kuanhsienyeh.github.io/vue-chart/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+tech stack : vue-cli, vue2, d3.js
