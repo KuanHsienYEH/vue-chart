@@ -1,6 +1,6 @@
 # Vue chart
-## hover pie chart to show deaitl bar chart
+## Hover over the pie chart to display detailed bar chart.
 
 demo : https://kuanhsienyeh.github.io/vue-chart/
 
-tech stack : vue-cli, vue2, d3.js
+tech stacks : vue, d3.js
